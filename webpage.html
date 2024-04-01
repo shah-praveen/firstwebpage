@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Greeting Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: lightblue;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    #greeting-form {
+      text-align: center;
+      transition: opacity 0.3s ease-in-out;
+    }
+    #message {
+      font-size: 1.2rem;
+      margin-top: 20px;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+    }
+    .highlight {
+      background-color: yellow;
+      transition: background-color 0.3s ease-in-out;
+    }
+  </style>
+</head>
+<body>
+  <div id="greeting-form">
+    <h2>Enter your name:</h2>
+    <form id="name-form">
+      <input type="text" id="name-input" required>
+      <br> <br>
+      <button type="submit">Submit</button>
+    </form>
+    <div id="message"></div>
+    <div id="datetime"></div>
+  </div>
+
+  <script>
+    document.getElementById('name-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+      var name = document.getElementById('name-input').value;
+      var message = document.getElementById('message');
+      var now = new Date();
+      var time = now.toLocaleTimeString();
+      var date = now.toDateString();
+      message.innerHTML = 'Hello, <span class="highlight">' + name + '</span>! Welcome to our website. It\'s ' + time + ' on ' + date + '.';
+      message.style.opacity = '1';
+      var datetime = document.getElementById('datetime');
+      datetime.textContent = 'Current date and time: ' + date + ', ' + time;
+    });
+  </script>
+</body>
+</html>
